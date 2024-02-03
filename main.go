@@ -2,17 +2,21 @@ package main
 
 import (
 	"fmt"
-	"github.com/fatih/color"
-	. "gopackages/wordz" //Добавляем пакет wordz через точку
-	newcolor "gopackages/color"
+	"github.com/huandu/xstrings"
+	"module03/Rand"
+	"module03/wordz"
 )
 
-func main()  {
-	newcolor.Greet()
-	fmt.Println("Hello world")
-	color.Red("Hello world again")
+func main() {
+	city := []string{"Владивосток", "Москва", "Санкт-Петербург", "Южно-Сахалинск"}
+	wordz.Words = city
+	wordz.Prefix = "Random city: "
+	randCity := xstrings.Shuffle(Rand.City())
+	fmt.Println(randCity)
 
-	fmt.Println(Hello) //Вызов переменной из пакета wordz
-	fmt.Println(Random())//Вызов функции из пакета wordz
-
+	digit := []string{"Один", "Писятдва", "228", "1488"}
+	wordz.Words = digit
+	wordz.Prefix = "Random digit: "
+	randdigit := Rand.Digit()
+	fmt.Println(randdigit)
 }
